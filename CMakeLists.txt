@@ -24,5 +24,8 @@ if(ENABLE_SOLUTION_FOLDERS)
   set_property(GLOBAL PROPERTY PREDEFINED_TARGETS_FOLDER "!CMakeTargets")
 endif()
 
+#find_path( JPEG_INCLUDE libjpeg.h PATHS "C:/mylib/libjpeg" "/third_party/libjpeg" )
+#find_library(libjpeg NAMES libjpeg PATHS "usr/lib/libjpeg" "C:/mylib/libjpeg" "/third_party/libjpeg")
+
 add_subdirectory(src)
 add_subdirectory(app_rtmaps)
