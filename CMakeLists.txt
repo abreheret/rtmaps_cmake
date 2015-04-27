@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 
 include(FindRTMaps.cmake)
 #------------------------------------------------------------------------------
-if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake)")
+if(CMAKE_BUILD_TOOL MATCHES "(msdev|devenv|nmake|MSBuild)")
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
 
