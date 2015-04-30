@@ -2,14 +2,7 @@
 include_directories( ../src )
 add_library( rtmaps_test SHARED rtmaps_test.cpp )
 target_link_libraries(rtmaps_test rtmaps_pck rtmaps_cmake)
-SET_TARGET_PROPERTIES(rtmaps_test PROPERTIES SUFFIX ".pck")
-SET_TARGET_PROPERTIES(rtmaps_test PROPERTIES LINK_FLAGS "${LINK_FLAGS} ${RTMAPS_LINK_FLAGS}")
-
-if(RTMAPS_VERSION MATCHES "RTMAPS_4")		
-	add_custom_command(TARGET rtmaps_test POST_BUILD COMMAND  $ENV{RTMAPS_SDKDIR}/bin/rtmaps_package_sign.exe -platform Win32 -package $<TARGET_FILE:rtmaps_test> -info $<TARGET_FILE:rtmaps_test>.pckinfo)
-else()
-	add_custom_command(TARGET rtmaps_test POST_BUILD COMMAND  $ENV{RTMAPS_INSTDIR}/bin/rtmaps_license_validation.exe $<TARGET_FILE:rtmaps_test> )	
-endif()
+configure_rtmaps(rtmaps_test)
 
 if(ENABLE_SOLUTION_FOLDERS)
   set_target_properties(rtmaps_test PROPERTIES FOLDER "rtmaps_package")
