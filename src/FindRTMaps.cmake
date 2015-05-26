@@ -9,8 +9,11 @@ else()
 	endif()
 endif()
 find_path( RTMAPS_INCLUDE maps.hpp PATHS ${RTMAPS_DIR}/include )
-
-message(RTMAPS_INCLUDE=${RTMAPS_INCLUDE})
+if( ${RTMAPS_INCLUDE} STREQUAL "RTMAPS_INCLUDE-NOTFOUND" ) 
+	message( FATAL_ERROR "FATAL_ERROR : RTMaps is not found ! ")
+else ()
+	message(STATUS "Found RTMaps in ${RTMAPS_INCLUDE}")
+endif()
 
 if(WIN32)
 	if(MSVC) 
@@ -36,10 +39,9 @@ else(WIN32)
 	SET(RTMAPS_LIB_DIR ${RTMAPS_DIR}/lib)
 endif(WIN32)
 
-#message( STATUS "-----------------------------------")
-#message( STATUS "RTMAPS_INCLUDE = "${RTMAPS_INCLUDE})
-#message( STATUS "RTMAPS_LIBRARY  = "${RTMAPS_LIB_DIR})
-#message( STATUS "-----------------------------------")
+
+message( STATUS "RTMAPS_INCLUDE = ${RTMAPS_INCLUDE}")
+message( STATUS "RTMAPS_LIBRARY = ${RTMAPS_LIB_DIR}")
 
 if(NOT RTMAPS_INCLUDE MATCHES NOTFOUND)
   if(NOT RTMAPS_LIBRARY MATCHES NOTFOUND)

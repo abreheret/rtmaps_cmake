@@ -1,6 +1,5 @@
 
 #include "maps.hpp"
-#include "rtmaps_cmake.hpp"
 
 // Declares a new MAPSComponent child class
 class MapsTest: public MAPSComponent 
@@ -35,7 +34,7 @@ MAPS_BEGIN_ACTIONS_DEFINITION(MapsTest)
 MAPS_END_ACTIONS_DEFINITION
 
 // Use the macros to declare this component (FCW) behaviour
-MAPS_COMPONENT_DEFINITION(MapsTest,"MapsTest","Tony&AmO",128,MAPS::Threaded,MAPS::Threaded,
+MAPS_COMPONENT_DEFINITION(MapsTest,"MyModule","V1",128,MAPS::Threaded,MAPS::Threaded,
 -1, // Nb of inputs
 -1, // Nb of outputs
 -1, // Nb of properties
@@ -51,7 +50,7 @@ void MapsTest::Birth() {
 }
 
 void MapsTest::Core() {
-	ReportInfo(printRTMAPS_CMAKE());
+	ReportInfo("My module");
 
 }
 

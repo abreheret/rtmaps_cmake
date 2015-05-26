@@ -1,19 +1,15 @@
-#link_directories(${OpenCV_LIB_DIR} )
-include_directories( . ) #${JPEG_INCLUDE} )
-					 
-#------------------------------------------------------------------------------
-file( GLOB rtmaps_cmake_src *.cpp ) 
-file( GLOB rtmaps_cmake_hdr *.hpp ) 
-add_library( rtmaps_cmake STATIC ${rtmaps_cmake_src} ${rtmaps_cmake_hdr} ) #${libjpeg}
-#target_link_libraries(rtmaps_cmake libdepend)
-#add_custom_command(TARGET mlda PRE_BUILD COMMAND 
-#	               $ENV{TORTOISE_INSTDIR}/bin/SubWCRev.exe
-#	               ${CMAKE_CURRENT_SOURCE_DIR}
-#	               "${CMAKE_CURRENT_SOURCE_DIR}/../version_template.h"
-#	               "${CMAKE_CURRENT_SOURCE_DIR}/../mlda_version.h")
+project(rtmaps_cmake)
+cmake_minimum_required(VERSION 2.8)
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "" FORCE)
+set(RTMAPS_VERSION "RTMAPS_4")
+include(FindRTMaps.cmake)
 
-#------------------------------------------------------------------------------
-if(ENABLE_SOLUTION_FOLDERS)
-  set_target_properties(rtmaps_cmake PROPERTIES FOLDER "myfolder")
-endif()
+add_library( my_module SHARED my_module.cpp)
+target_link_libraries(my_module rtmaps_pck)
+configure_rtmaps(my_module)
 
+include_directories(my_lib)
+add_library( my_lib my_lib/my_lib.cpp my_lib/my_lib.hpp)
+add_library( my_module_with_my_lib SHARED my_module_with_my_lib.cpp)
+target_link_libraries(my_module_with_my_lib rtmaps_pck my_lib)
+configure_rtmaps(my_module_with_my_lib)
