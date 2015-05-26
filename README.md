@@ -43,7 +43,7 @@ To test the example launch build_x86_vc10.bat or enter these command lines :
 
 
 
-### License MIT license 
+### License MIT 
 
 Copyright (c) 2014 Amaury BREHERET
 
