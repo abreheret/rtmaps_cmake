@@ -7,7 +7,6 @@
 Here is a simple example of use to create your RTMaps project with CMakeLists.txt :
 
 ```cmake
-set(RTMAPS_VERSION "RTMAPS_4")
 include(FindRTMaps.cmake)
 add_library( my_module SHARED my_module.cpp my_module.h )
 target_link_libraries(my_module rtmaps_pck)
